@@ -1,0 +1,354 @@
+/* ================= GLOBAL STYLES ================= */
+
+body {
+    margin: 0;
+    font-family: "Tajawal", sans-serif;
+    background-color: #ffffff;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+/* ================= HEADER SECTION ================= */
+
+.main-header {
+    background-color: #0f213f;
+    padding: 8px 0;   /* smaller */
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    transition: transform 0.35s ease;
+}
+
+/* Hide header class */
+.header-hidden {
+    transform: translateY(-100%);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li a {
+    color: #d8dde6;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #ffffff;
+}
+
+.logo img {
+    width: 55px;     /* was 85px */
+    height: auto;
+    border-radius: 50%;
+}
+/* ================= HAMBURGER MENU ================= */
+
+.menu-toggle {
+    display: none;
+    font-size: 22px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* ================= RESPONSIVE STYLES ================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: row-reverse;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background-color: #0f213f;
+        gap: 15px;
+        padding: 20px 0;
+        text-align: center;
+        border-top: 1px solid #23324f;
+    }
+
+    /* When active */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* ================= HERO SECTION ================= */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    background: url("assets/hero.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(10, 20, 40, 0.7); /* dark navy overlay */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.hero-content p {
+    font-size: 20px;
+    opacity: 0.9;
+    line-height: 1.8;
+}
+
+/* ===== Responsive Hero ===== */
+@media (max-width: 768px) {
+    .hero {
+        height: 70vh;
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+}
+
+
+/* ================= ABOUT SECTION ================= */
+
+.about-section {
+    width: 90%;
+    margin: 120px auto;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 32px;
+    color: #0f213f;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 8px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #0f213f;
+    transition: 0.3s;
+}
+
+.tab-btn.active {
+    background-color: #0f213f;
+    color: #fff;
+    border-color: #0f213f;
+}
+
+/* Content Card */
+.tab-content-container {
+    display: flex;
+    justify-content: center;
+}
+
+.tab-content {
+    display: none;
+    width: 100%;
+    max-width: 900px;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 16px;
+
+    /* Modern card shadow */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+
+    /* Clean border */
+    border: 1px solid #e5e7eb;
+
+    line-height: 2;
+    font-size: 17px;
+    color: #333;
+    transition: 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Hover effect for better feel */
+.tab-content:hover {
+    box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tab-btn {
+        padding: 6px 15px;
+        font-size: 14px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+
+    .tab-content {
+        font-size: 15px;
+        padding: 18px;
+    }
+}
+
+/* ================= VISION SECTION ================= */
+
+.vision-section {
+    width: 90%;
+    margin: 120px auto;
+    text-align: center;
+}
+
+.vision-card {
+    background: #ffffff;
+    padding: 35px;
+    margin-top: 25px;
+    border-radius: 16px;
+
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+
+    font-size: 18px;
+    line-height: 2.1;
+    color: #333;
+    transition: 0.3s;
+}
+
+.vision-card:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .vision-card {
+        font-size: 16px;
+        padding: 22px;
+    }
+}
+
+/* ================= MISSION SECTION ================= */
+
+.mission-section {
+    width: 90%;
+    margin: 120px auto;
+    text-align: center;
+}
+
+.mission-card {
+    background: #ffffff;
+    padding: 35px;
+    margin-top: 25px;
+    border-radius: 16px;
+
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+
+    font-size: 18px;
+    line-height: 2.1;
+    color: #333;
+    transition: 0.3s ease;
+}
+
+.mission-card:hover {
+    box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .mission-card {
+        font-size: 16px;
+        padding: 22px;
+    }
+}
+
+/* ================= SECTION ICONS ================= */
+
+.section-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    opacity: 0.9;
+
+    /* Smooth fade + minimal animation */
+    transform: translateY(0);
+    transition: 0.3s ease;
+}
+
+.section-icon:hover {
+    transform: translateY(-5px);
+    opacity: 1;
+}
+
+/* ================= SECTION SEPARATORS ================= */
+
+.section-separator {
+    width: 90%;
+    margin: 60px auto;
+    height: 1px;
+    background: #dcdcdc;
+    opacity: 0.7;
+    border-radius: 2px;
+}
