@@ -4,12 +4,27 @@ body {
     margin: 0;
     font-family: "Tajawal", sans-serif;
     background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container {
     width: 90%;
     margin: auto;
 }
+
+.about-section,
+.vision-section,
+.mission-section,
+.stats-section,
+.quotes-section,
+.section-separator {
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 
 /* ================= HEADER SECTION ================= */
 
@@ -60,6 +75,13 @@ body {
     height: auto;
     border-radius: 50%;
 }
+
+.club-logo img {
+    width: 80px;      /* increase size so rectangle shows clearly */
+    height: auto;
+    border-radius: 8px;   /* slight rounding */
+    object-fit: contain;  /* makes the rectangle stay clean */
+}
 /* ================= HAMBURGER MENU ================= */
 
 .menu-toggle {
@@ -105,7 +127,7 @@ body {
 
 .hero {
     position: relative;
-    width: 100%;
+    width: 100vw;
     height: 90vh;
     background: url("assets/hero.jpg") center/cover no-repeat;
     display: flex;
@@ -114,6 +136,10 @@ body {
     text-align: center;
     color: white;
     padding: 20px;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: scroll;
+    margin: 0;
 }
 
 .hero-overlay {
@@ -158,11 +184,24 @@ body {
     }
 }
 
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 28px;
+    }
+
+    .tab-content,
+    .vision-card,
+    .mission-card {
+        font-size: 16px;
+        padding: 24px;
+    }
+}
+
 
 /* ================= ABOUT SECTION ================= */
 
 .about-section {
-    width: 90%;
+    width: 80%;
     margin: 120px auto;
     text-align: center;
 }
@@ -252,11 +291,23 @@ body {
         padding: 18px;
     }
 }
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 28px;
+    }
+
+    .tab-content,
+    .vision-card,
+    .mission-card {
+        font-size: 16px;
+        padding: 24px;
+    }
+}
 
 /* ================= VISION SECTION ================= */
 
 .vision-section {
-    width: 90%;
+    width: 80%;
     margin: 120px auto;
     text-align: center;
 }
@@ -287,11 +338,23 @@ body {
         padding: 22px;
     }
 }
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 28px;
+    }
+
+    .tab-content,
+    .vision-card,
+    .mission-card {
+        font-size: 16px;
+        padding: 24px;
+    }
+}
 
 /* ================= MISSION SECTION ================= */
 
 .mission-section {
-    width: 90%;
+    width: 80%;
     margin: 120px auto;
     text-align: center;
 }
@@ -320,6 +383,18 @@ body {
     .mission-card {
         font-size: 16px;
         padding: 22px;
+    }
+}
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 28px;
+    }
+
+    .tab-content,
+    .vision-card,
+    .mission-card {
+        font-size: 16px;
+        padding: 24px;
     }
 }
 
@@ -351,4 +426,265 @@ body {
     background: #dcdcdc;
     opacity: 0.7;
     border-radius: 2px;
+}
+
+
+/* ================= STATS SECTION ================= */
+
+.stats-section {
+    width: 90%;
+    margin: 120px auto;
+    padding: 50px 30px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #0f213f, #1f4b57);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+    color: #ffffff;
+    text-align: center;
+}
+
+.stats-header {
+    margin-bottom: 30px;
+}
+
+.stats-title {
+    color: #ffffff; /* override default dark title color */
+    margin-bottom: 8px;
+}
+
+.stats-subtitle {
+    font-size: 15px;
+    color: #dbeafe;
+    opacity: 0.9;
+}
+
+/* Cards grid */
+.stats-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    align-items: stretch;
+}
+
+/* Single card */
+.stat-card {
+    background: #ffffff;
+    color: #111827;
+    border-radius: 18px;
+    padding: 26px 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.25s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+}
+
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0f213f;
+}
+
+.stat-label {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Responsive for phones */
+@media (max-width: 768px) {
+    .stats-section {
+        padding: 35px 18px;
+        margin: 80px auto;
+    }
+
+    .stat-number {
+        font-size: 24px;
+    }
+
+    .stat-label {
+        font-size: 13px;
+    }
+}
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 28px;
+    }
+
+    .tab-content,
+    .vision-card,
+    .mission-card {
+        font-size: 16px;
+        padding: 24px;
+    }
+}
+
+/* ================= PEOPLE & QUOTES SECTION ================= */
+
+.quotes-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 120px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+}
+
+.quote-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Elegant hover */
+.quote-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+}
+
+/* The rectangular frameless image */
+.quote-image img {
+    width: 180px;
+    height: auto;
+    border-radius: 14px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Text styling */
+.quote-text {
+    flex: 1;
+}
+
+.quote {
+    font-size: 18px;
+    line-height: 2;
+    margin-bottom: 12px;
+    color: #242424;
+}
+
+.quote-author {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0f213f;
+    opacity: 0.85;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+    .quote-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .quote-image img {
+        width: 70%;
+        max-width: 260px;
+    }
+}
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 28px;
+    }
+
+    .tab-content,
+    .vision-card,
+    .mission-card {
+        font-size: 16px;
+        padding: 24px;
+    }
+}
+
+/* ================= FOOTER SECTION ================= */
+
+.main-footer {
+    width: 100%;
+    margin-top: 80px;
+    background: linear-gradient(135deg, #0f213f, #1f4b57);
+    padding: 50px 20px;
+    color: #ffffff;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-logo img {
+    width: 120px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+}
+
+.footer-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.footer-socials img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    transition: 0.3s ease;
+}
+
+.footer-socials img:hover {
+    transform: translateY(-4px);
+    opacity: 0.8;
+}
+
+.footer-copy {
+    font-size: 14px;
+    opacity: 0.85;
+    margin-top: 10px;
+}
+
+/* Responsive footer */
+@media (max-width: 768px) {
+    .footer-socials img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .footer-title {
+        font-size: 20px;
+    }
+}
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 28px;
+    }
+
+    .tab-content,
+    .vision-card,
+    .mission-card {
+        font-size: 16px;
+        padding: 24px;
+    }
 }
