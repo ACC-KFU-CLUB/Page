@@ -60,7 +60,7 @@ function startCounters() {
       const progress = Math.min(elapsed / duration, 1);
       const value = Math.floor(progress * target);
       const prefix = counter.getAttribute("data-prefix") || "";
-      counter.textContent = prefix + value.toLocaleString("ar-SA");
+      counter.textContent = prefix + value.toLocaleString("en-US");
 
 
 
