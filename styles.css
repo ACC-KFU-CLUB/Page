@@ -30,7 +30,7 @@ body {
 
 .main-header {
     background-color: #0f213f;
-    padding: 8px 0;   /* smaller */
+    padding-top: auto;              
     position: fixed;
     top: 0;
     right: 0;
@@ -46,8 +46,9 @@ body {
 
 .navbar {
     display: flex;
-    align-items: center;
+    align-items: center;        
     justify-content: space-between;
+    min-height: 70px;   
 }
 
 /* Navigation Links */
@@ -64,6 +65,9 @@ body {
     text-decoration: none;
     font-size: 16px;
     transition: 0.3s;
+    padding: 10px 6px;
+    display: inline-flex;
+    align-items: center;
 }
 
 .nav-links li a:hover {
@@ -127,10 +131,11 @@ body {
 
 .hero {
     position: relative;
-    width: 100vw;
-    height: 90vh;
+    width: 100%;
+    min-height: 100vh; /* FULL SCREEN HEIGHT 👈 */
     background: url("assets/hero.jpg") center/cover no-repeat;
     display: flex;
+    flex-direction: column; /* allows content stacking if needed later */
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -534,6 +539,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    align-items: center;
 
 }
 
@@ -548,8 +554,9 @@ body {
     gap: 20px;
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
     transition: 0.3s ease;
-    max-width: 600px;
     margin: 0 auto;
+    width: 100%;
+    max-width: 700px;
 }
 
 /* Elegant hover */
