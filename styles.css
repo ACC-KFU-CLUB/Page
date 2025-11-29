@@ -775,6 +775,9 @@ body {
     object-fit: contain;
     animation: pulseLogo 0.9s infinite ease-in-out;
 }
+.page-loader-overlay-initial {
+    background: #0f213f; /* non-transparent solid background */
+}
 
 /* Animations */
 @keyframes pulseLogo {

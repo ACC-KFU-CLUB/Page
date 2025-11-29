@@ -100,13 +100,18 @@ if (statsSection && "IntersectionObserver" in window) {
 
 document.querySelectorAll(".nav-links a").forEach(link => {
   link.addEventListener("click", (e) => {
+    const href = link.getAttribute("href");
+
+    // Ignore empty or hash-only links
+    if (!href || href === "#") return;
+
     const loader = document.querySelector(".logo img");
     if (!loader) return;
 
     // Prevent instant navigation
     e.preventDefault();
 
-    // Create overlay loader
+    // Create overlay loader (transparent for internal navigation)
     const overlay = document.createElement("div");
     overlay.className = "page-loader-overlay";
     overlay.appendChild(loader.cloneNode()); // clone logo.png
@@ -114,7 +119,7 @@ document.querySelectorAll(".nav-links a").forEach(link => {
 
     // Navigate after small delay so animation is visible
     setTimeout(() => {
-      window.location.href = link.getAttribute("href");
+      window.location.href = href;
     }, 600);
   });
 });
@@ -122,11 +127,16 @@ document.querySelectorAll(".nav-links a").forEach(link => {
 /* ================= SHOW LOADER ON FIRST PAGE LOAD ================= */
 
 window.addEventListener("load", () => {
+  // Only show solid loader once per session (first site open)
+  if (sessionStorage.getItem("hasSeenInitialLoader")) return;
+  sessionStorage.setItem("hasSeenInitialLoader", "true");
+
   const logo = document.querySelector(".logo img");
   if (!logo) return;
 
   const overlay = document.createElement("div");
-  overlay.className = "page-loader-overlay";
+  // add extra class to make background solid
+  overlay.className = "page-loader-overlay page-loader-overlay-initial";
   overlay.appendChild(logo.cloneNode()); // clone logo.png for loader
   document.body.appendChild(overlay);
 
