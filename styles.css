@@ -162,6 +162,13 @@ body {
     text-align: center;
 }
 
+.section-title-event{
+    font-size: 50px;
+    color: #0f213f;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-align: center;
+}
 /* ================= ABOUT SECTION ================= */
 
 .about-section {
@@ -299,6 +306,17 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: 80px auto;       /* slightly larger spacing */
+    height: 3px;             /* thicker line */
+    background: #0f213f;     /* stronger identity color */
+    opacity: 1;              /* fully visible */
+    border-radius: 4px;
+    position: relative;
+}
+
+.section-separator-event{
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;       /* slightly larger spacing */
     height: 3px;             /* thicker line */
     background: #0f213f;     /* stronger identity color */
     opacity: 1;              /* fully visible */

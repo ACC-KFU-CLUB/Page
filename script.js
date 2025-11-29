@@ -95,6 +95,7 @@ if (statsSection && "IntersectionObserver" in window) {
   startCounters();
 }
 
+
 /* ================= PAGE LOADING LOGO INDICATOR ================= */
 
 document.querySelectorAll(".nav-links a").forEach(link => {
@@ -117,3 +118,21 @@ document.querySelectorAll(".nav-links a").forEach(link => {
     }, 600);
   });
 });
+
+/* ================= SHOW LOADER ON FIRST PAGE LOAD ================= */
+
+window.addEventListener("load", () => {
+  const logo = document.querySelector(".logo img");
+  if (!logo) return;
+
+  const overlay = document.createElement("div");
+  overlay.className = "page-loader-overlay";
+  overlay.appendChild(logo.cloneNode()); // clone logo.png for loader
+  document.body.appendChild(overlay);
+
+  // Remove loader after animation duration
+  setTimeout(() => {
+    overlay.remove();
+  }, 1200);
+});
+
