@@ -1,6 +1,4 @@
-/* ================= HEADER HIDE/SHOW ON SCROLL ================= */
-
-let lastScroll = 0;
+/* ================= HEADER HIDE/SHOW ON SCROLL ================= let lastScroll = 0;
 const header = document.querySelector(".main-header");
 
 window.addEventListener("scroll", () => {
@@ -15,7 +13,9 @@ window.addEventListener("scroll", () => {
     }
 
     lastScroll = currentScroll;
-});
+}); */
+
+
 
 /* ================= MOBILE MENU ================= */
 

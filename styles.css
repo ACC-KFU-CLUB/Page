@@ -55,7 +55,12 @@ body {
 }
 
 /* Left side: logos */
-.club-logo,
+.club-logo{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+}
 .logo {
     display: flex;
     align-items: center;
@@ -63,7 +68,12 @@ body {
 }
 
 /* Make both logos the same size */
-.club-logo img,
+.club-logo img{
+    width: 120px;
+    height: 50px;
+    object-fit: contain;
+    margin-left: auto;
+}
 .logo img {
     width: 120px;
     height: 50px;
@@ -526,6 +536,7 @@ body {
         text-align: center;
         border-top: 1px solid #23324f;
         margin: 0;
+        
     }
 
     .nav-links.active {
@@ -536,7 +547,12 @@ body {
         display: block;
     }
 
-    .club-logo img,
+    .club-logo img{
+        width: 90px;
+        height: 40px;
+        margin-left: auto;
+
+    }
     .logo img {
         width: 90px;
         height: 40px;
