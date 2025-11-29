@@ -94,3 +94,26 @@ if (statsSection && "IntersectionObserver" in window) {
   // Fallback if IntersectionObserver is not supported
   startCounters();
 }
+
+/* ================= PAGE LOADING LOGO INDICATOR ================= */
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", (e) => {
+    const loader = document.querySelector(".logo img");
+    if (!loader) return;
+
+    // Prevent instant navigation
+    e.preventDefault();
+
+    // Create overlay loader
+    const overlay = document.createElement("div");
+    overlay.className = "page-loader-overlay";
+    overlay.appendChild(loader.cloneNode()); // clone logo.png
+    document.body.appendChild(overlay);
+
+    // Navigate after small delay so animation is visible
+    setTimeout(() => {
+      window.location.href = link.getAttribute("href");
+    }, 600);
+  });
+});

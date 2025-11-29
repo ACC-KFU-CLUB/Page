@@ -638,4 +638,134 @@ body {
         width: 30px;
         height: 30px;
     }
+
+     .media-center-grid {
+        grid-template-columns: 1fr; /* stack 1 per row on ultra small screens if needed */
+    }
+}
+
+/* <!-- Media Center Intro --> */
+
+/* ================= MEDIA CENTER STYLES ================= */
+
+.media-center-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+/* Wrapper for all events (3 per row grid) */
+.media-center-wrapper {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.media-center-grid {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    justify-content: center;
+}
+
+/* Modern professional event card */
+.media-event-card {
+    background: #ffffff;
+    border: 2px solid #0f213f; /* required border color */
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.media-event-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.10);
+}
+
+/* Ensure all images same width/height for consistency */
+.media-event-img {
+    width: 100%;
+    height: 200px;  /* fixed height */
+    object-fit: cover;
+    display: block;
+}
+
+/* Card body layout */
+.media-event-body {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+    flex: 1;
+}
+
+/* Typography */
+.media-event-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f213f;
+    margin: 0;
+}
+
+.media-event-desc {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #374151;
+    margin: 0;
+    flex: 1;
+}
+
+/* "للمزيد" link */
+.media-event-link {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f213f;
+    text-decoration: none;
+    border: 1px solid #0f213f;
+    padding: 6px 14px;
+    border-radius: 8px;
+    width: fit-content;
+    transition: 0.3s;
+}
+
+.media-event-link:hover {
+    background: #0f213f;
+    color: #fff;
+}
+
+
+/* ================= PAGE LOADER OVERLAY ================= */
+
+.page-loader-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15,33,63,0.65); /* dark club identity overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease;
+}
+
+.page-loader-overlay img {
+    width: 140px;
+    height: 60px;
+    object-fit: contain;
+    animation: pulseLogo 0.9s infinite ease-in-out;
+}
+
+/* Animations */
+@keyframes pulseLogo {
+    0% { opacity: 0.5; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.5; transform: scale(0.95); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
