@@ -1,36 +1,37 @@
 /* ================= GLOBAL STYLES ================= */
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: "Tajawal", sans-serif;
     background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    color: #111827;
 }
 
 .container {
     width: 90%;
-    margin: auto;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Shared layout for main sections */
 .about-section,
 .vision-section,
 .mission-section,
 .stats-section,
-.quotes-section,
-.section-separator {
+.quotes-section {
+    width: 90%;
     max-width: 1200px;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 120px auto;
 }
-
 
 /* ================= HEADER SECTION ================= */
 
 .main-header {
     background-color: #0f213f;
-    padding-top: auto;              
     position: fixed;
     top: 0;
     right: 0;
@@ -39,25 +40,43 @@ body {
     transition: transform 0.35s ease;
 }
 
-/* Hide header class */
+/* Hide header on scroll */
 .header-hidden {
     transform: translateY(-100%);
 }
 
 .navbar {
     display: flex;
-    align-items: center;        
+    align-items: center;
     justify-content: space-between;
-    min-height: 70px;   
+    min-height: 70px;
+    padding: 0 32px;
+    
+}
+
+/* Left side: logos */
+.club-logo,
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Make both logos the same size */
+.club-logo img,
+.logo img {
+    width: 120px;
+    height: 50px;
+    object-fit: contain;
 }
 
 /* Navigation Links */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 18px;
+    gap: 30px;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
 }
 
 .nav-links li a {
@@ -74,20 +93,7 @@ body {
     color: #ffffff;
 }
 
-.logo img {
-    width: 55px;     /* was 85px */
-    height: auto;
-    border-radius: 50%;
-}
-
-.club-logo img {
-    width: 80px;      /* increase size so rectangle shows clearly */
-    height: auto;
-    border-radius: 8px;   /* slight rounding */
-    object-fit: contain;  /* makes the rectangle stay clean */
-}
-/* ================= HAMBURGER MENU ================= */
-
+/* Hamburger menu (mobile) */
 .menu-toggle {
     display: none;
     font-size: 22px;
@@ -95,65 +101,27 @@ body {
     cursor: pointer;
 }
 
-/* ================= RESPONSIVE STYLES ================= */
-
-@media (max-width: 768px) {
-
-    .navbar {
-        flex-direction: row-reverse;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 100%;
-        background-color: #0f213f;
-        gap: 15px;
-        padding: 20px 0;
-        text-align: center;
-        border-top: 1px solid #23324f;
-    }
-
-    /* When active */
-    .nav-links.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-}
-
 /* ================= HERO SECTION ================= */
 
 .hero {
     position: relative;
     width: 100%;
-    min-height: 100vh; /* FULL SCREEN HEIGHT 👈 */
+    min-height: 100vh;
     background: url("assets/hero.jpg") center/cover no-repeat;
     display: flex;
-    flex-direction: column; /* allows content stacking if needed later */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
     padding: 20px;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: scroll;
     margin: 0;
 }
 
 .hero-overlay {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(10, 20, 40, 0.7); /* dark navy overlay */
+    inset: 0;
+    background: rgba(10, 20, 40, 0.7);
 }
 
 .hero-content {
@@ -174,48 +142,20 @@ body {
     line-height: 1.8;
 }
 
-/* ===== Responsive Hero ===== */
-@media (max-width: 768px) {
-    .hero {
-        height: 70vh;
-    }
-
-    .hero-content h1 {
-        font-size: 28px;
-    }
-
-    .hero-content p {
-        font-size: 16px;
-    }
-}
-
-@media (max-width: 1024px) {
-    .section-title {
-        font-size: 28px;
-    }
-
-    .tab-content,
-    .vision-card,
-    .mission-card {
-        font-size: 16px;
-        padding: 24px;
-    }
-}
-
-
-/* ================= ABOUT SECTION ================= */
-
-.about-section {
-    width: 80%;
-    margin: 120px auto;
-    text-align: center;
-}
+/* ================= SHARED SECTION STYLES ================= */
 
 .section-title {
     font-size: 32px;
     color: #0f213f;
     margin-bottom: 30px;
     font-weight: 700;
+    text-align: center;
+}
+
+/* ================= ABOUT SECTION ================= */
+
+.about-section {
+    text-align: center;
 }
 
 /* Tabs */
@@ -258,62 +198,27 @@ body {
     background: #ffffff;
     padding: 35px;
     border-radius: 16px;
-
-    /* Modern card shadow */
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
-
-    /* Clean border */
     border: 1px solid #e5e7eb;
-
     line-height: 2;
     font-size: 17px;
     color: #333;
     transition: 0.3s ease;
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
 }
 
 .tab-content.active {
     display: block;
 }
 
-/* Hover effect for better feel */
 .tab-content:hover {
-    box-shadow: 0 12px 30px rgba(0,0,0,0.10);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .tab-btn {
-        padding: 6px 15px;
-        font-size: 14px;
-    }
-
-    .section-title {
-        font-size: 26px;
-    }
-
-    .tab-content {
-        font-size: 15px;
-        padding: 18px;
-    }
-}
-@media (max-width: 1024px) {
-    .section-title {
-        font-size: 28px;
-    }
-
-    .tab-content,
-    .vision-card,
-    .mission-card {
-        font-size: 16px;
-        padding: 24px;
-    }
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
 }
 
 /* ================= VISION SECTION ================= */
 
 .vision-section {
-    width: 80%;
-    margin: 120px auto;
     text-align: center;
 }
 
@@ -322,45 +227,23 @@ body {
     padding: 35px;
     margin-top: 25px;
     border-radius: 16px;
-
     border: 1px solid #e5e7eb;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
-
     font-size: 18px;
     line-height: 2.1;
     color: #333;
     transition: 0.3s;
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
 }
 
 .vision-card:hover {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .vision-card {
-        font-size: 16px;
-        padding: 22px;
-    }
-}
-@media (max-width: 1024px) {
-    .section-title {
-        font-size: 28px;
-    }
-
-    .tab-content,
-    .vision-card,
-    .mission-card {
-        font-size: 16px;
-        padding: 24px;
-    }
-}
-
 /* ================= MISSION SECTION ================= */
 
 .mission-section {
-    width: 80%;
-    margin: 120px auto;
     text-align: center;
 }
 
@@ -369,38 +252,18 @@ body {
     padding: 35px;
     margin-top: 25px;
     border-radius: 16px;
-
     border: 1px solid #e5e7eb;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
-
     font-size: 18px;
     line-height: 2.1;
     color: #333;
     transition: 0.3s ease;
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
 }
 
 .mission-card:hover {
-    box-shadow: 0 12px 30px rgba(0,0,0,0.10);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .mission-card {
-        font-size: 16px;
-        padding: 22px;
-    }
-}
-@media (max-width: 1024px) {
-    .section-title {
-        font-size: 28px;
-    }
-
-    .tab-content,
-    .vision-card,
-    .mission-card {
-        font-size: 16px;
-        padding: 24px;
-    }
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
 }
 
 /* ================= SECTION ICONS ================= */
@@ -411,8 +274,6 @@ body {
     object-fit: contain;
     margin-bottom: 15px;
     opacity: 0.9;
-
-    /* Smooth fade + minimal animation */
     transform: translateY(0);
     transition: 0.3s ease;
 }
@@ -426,19 +287,18 @@ body {
 
 .section-separator {
     width: 90%;
-    margin: 60px auto;
-    height: 1px;
-    background: #dcdcdc;
-    opacity: 0.7;
-    border-radius: 2px;
+    max-width: 1200px;
+    margin: 80px auto;       /* slightly larger spacing */
+    height: 3px;             /* thicker line */
+    background: #0f213f;     /* stronger identity color */
+    opacity: 1;              /* fully visible */
+    border-radius: 4px;
+    position: relative;
 }
-
 
 /* ================= STATS SECTION ================= */
 
 .stats-section {
-    width: 90%;
-    margin: 120px auto;
     padding: 50px 30px;
     border-radius: 24px;
     background: linear-gradient(135deg, #0f213f, #1f4b57);
@@ -452,7 +312,7 @@ body {
 }
 
 .stats-title {
-    color: #ffffff; /* override default dark title color */
+    color: #ffffff;
     margin-bottom: 8px;
 }
 
@@ -468,6 +328,8 @@ body {
     gap: 24px;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     align-items: stretch;
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
 }
 
 /* Single card */
@@ -482,13 +344,14 @@ body {
     align-items: center;
     justify-content: space-between;
     transition: 0.25s ease;
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
 }
 
 .stat-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
 }
-
 
 .stat-number {
     font-size: 28px;
@@ -502,45 +365,13 @@ body {
     line-height: 1.7;
 }
 
-/* Responsive for phones */
-@media (max-width: 768px) {
-    .stats-section {
-        padding: 35px 18px;
-        margin: 80px auto;
-    }
-
-    .stat-number {
-        font-size: 24px;
-    }
-
-    .stat-label {
-        font-size: 13px;
-    }
-}
-@media (max-width: 1024px) {
-    .section-title {
-        font-size: 28px;
-    }
-
-    .tab-content,
-    .vision-card,
-    .mission-card {
-        font-size: 16px;
-        padding: 24px;
-    }
-}
-
 /* ================= PEOPLE & QUOTES SECTION ================= */
 
 .quotes-section {
-    width: 90%;
-    max-width: 1200px;
-    margin: 120px auto;
     display: flex;
     flex-direction: column;
     gap: 40px;
     align-items: center;
-
 }
 
 .quote-card {
@@ -554,12 +385,12 @@ body {
     gap: 20px;
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
     transition: 0.3s ease;
-    margin: 0 auto;
     width: 100%;
     max-width: 700px;
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
 }
 
-/* Elegant hover */
 .quote-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
@@ -573,6 +404,7 @@ body {
     object-fit: cover;
     display: block;
     margin: 0 auto;
+    border: 2px solid #0f213f;
 }
 
 /* Text styling */
@@ -592,31 +424,6 @@ body {
     font-weight: 600;
     color: #0f213f;
     opacity: 0.85;
-}
-
-/* Responsive behavior */
-@media (max-width: 768px) {
-    .quote-card {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .quote-image img {
-        width: 70%;
-        max-width: 260px;
-    }
-}
-@media (max-width: 1024px) {
-    .section-title {
-        font-size: 28px;
-    }
-
-    .tab-content,
-    .vision-card,
-    .mission-card {
-        font-size: 16px;
-        padding: 24px;
-    }
 }
 
 /* ================= FOOTER SECTION ================= */
@@ -672,18 +479,14 @@ body {
     margin-top: 10px;
 }
 
-/* Responsive footer */
-@media (max-width: 768px) {
-    .footer-socials img {
-        width: 30px;
-        height: 30px;
+/* ================== MEDIA QUERIES ================== */
+
+/* Tablets and medium screens (≤ 1024px) */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 0 20px;
     }
 
-    .footer-title {
-        font-size: 20px;
-    }
-}
-@media (max-width: 1024px) {
     .section-title {
         font-size: 28px;
     }
@@ -693,5 +496,130 @@ body {
     .mission-card {
         font-size: 16px;
         padding: 24px;
+    }
+
+    .stats-section {
+        padding: 40px 22px;
+    }
+}
+
+/* Phones (iPhone / Samsung etc, ≤ 768px) */
+@media (max-width: 768px) {
+
+    /* Header / Nav */
+    .navbar {
+        padding: 0 16px;
+        min-height: 60px;
+        direction: ltr;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background-color: #0f213f;
+        gap: 15px;
+        padding: 20px 0;
+        text-align: center;
+        border-top: 1px solid #23324f;
+        margin: 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .club-logo img,
+    .logo img {
+        width: 90px;
+        height: 40px;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 16px;
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    /* Sections general */
+    .about-section,
+    .vision-section,
+    .mission-section,
+    .stats-section,
+    .quotes-section {
+        width: 92%;
+        margin: 80px auto;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .tab-btn {
+        padding: 6px 15px;
+        font-size: 14px;
+    }
+
+    .tab-content {
+        font-size: 15px;
+        padding: 18px;
+    }
+
+    .vision-card,
+    .mission-card {
+        font-size: 16px;
+        padding: 22px;
+    }
+
+    /* Stats */
+    .stats-section {
+        padding: 32px 16px;
+        margin: 60px auto;
+    }
+
+    .stat-number {
+        font-size: 24px;
+    }
+
+    .stat-label {
+        font-size: 13px;
+    }
+
+    /* Quotes */
+    .quote-image img {
+        width: 70%;
+        max-width: 260px;
+    }
+
+    .quote {
+        font-size: 16px;
+    }
+
+    .quote-author {
+        font-size: 14px;
+    }
+
+    /* Footer */
+    .footer-title {
+        font-size: 20px;
+    }
+
+    .footer-socials img {
+        width: 30px;
+        height: 30px;
     }
 }
