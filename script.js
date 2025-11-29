@@ -126,23 +126,32 @@ document.querySelectorAll(".nav-links a").forEach(link => {
 
 /* ================= SHOW LOADER ON FIRST PAGE LOAD ================= */
 
-window.addEventListener("load", () => {
+let initialLoaderOverlay = null;
+
+// Create the first-load loader as soon as this script runs
+(function showInitialLoaderOnce() {
   // Only show solid loader once per session (first site open)
   if (sessionStorage.getItem("hasSeenInitialLoader")) return;
-  sessionStorage.setItem("hasSeenInitialLoader", "true");
 
   const logo = document.querySelector(".logo img");
   if (!logo) return;
 
-  const overlay = document.createElement("div");
-  // add extra class to make background solid
-  overlay.className = "page-loader-overlay page-loader-overlay-initial";
-  overlay.appendChild(logo.cloneNode()); // clone logo.png for loader
-  document.body.appendChild(overlay);
+  initialLoaderOverlay = document.createElement("div");
+  // solid background for very first load
+  initialLoaderOverlay.className = "page-loader-overlay page-loader-overlay-initial";
+  initialLoaderOverlay.appendChild(logo.cloneNode());
+  document.body.appendChild(initialLoaderOverlay);
 
-  // Remove loader after animation duration
+  sessionStorage.setItem("hasSeenInitialLoader", "true");
+})();
+
+// Remove the initial loader after page fully loads
+window.addEventListener("load", () => {
+  if (!initialLoaderOverlay) return;
+
   setTimeout(() => {
-    overlay.remove();
+    initialLoaderOverlay.remove();
   }, 1200);
 });
+
 
