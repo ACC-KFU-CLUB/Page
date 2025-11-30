@@ -155,3 +155,31 @@ window.addEventListener("load", () => {
 });
 
 
+/* ================= REPEATABLE LIGHT SCROLL REVEAL EFFECT ================= */
+
+const revealItems = document.querySelectorAll(".reveal-on-scroll");
+
+if ("IntersectionObserver" in window && revealItems.length) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        } else {
+          // OPTIONAL: reset it so it animates again when visible
+          entry.target.classList.remove("is-visible");
+          entry.target.classList.add("reset");
+          void entry.target.offsetWidth; // trigger reflow
+          entry.target.classList.remove("reset");
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  revealItems.forEach((item) => revealObserver.observe(item));
+} else if (revealItems.length) {
+  revealItems.forEach((item) => item.classList.add("is-visible"));
+}
+
+
