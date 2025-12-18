@@ -26,7 +26,7 @@ body {
 .partners-section{
     width: 90%;
     max-width: 1200px;
-    margin: 120px auto;
+    margin: 10px auto;
 }
 
 /* ================= HEADER SECTION ================= */
@@ -306,7 +306,7 @@ body {
 .section-separator {
     width: 90%;
     max-width: 1200px;
-    margin: 80px auto;       /* slightly larger spacing */
+    margin: 40px auto;       /* slightly larger spacing */
     height: 3px;             /* thicker line */
     background: #0f213f;     /* stronger identity color */
     opacity: 1;              /* fully visible */
@@ -649,7 +649,7 @@ body {
     .quotes-section,
     .partners-section {
         width: 92%;
-        margin: 80px auto;
+        margin: 40px auto;
     }
     
     .partner-card img {
@@ -865,3 +865,4 @@ body {
 .reveal-on-scroll.reset {
     transition: none;
 }
+
