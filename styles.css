@@ -22,7 +22,8 @@ body {
 .vision-section,
 .mission-section,
 .stats-section,
-.quotes-section {
+.quotes-section 
+.partners-section{
     width: 90%;
     max-width: 1200px;
     margin: 120px auto;
@@ -507,6 +508,57 @@ body {
     margin-top: 10px;
 }
 
+/* ================= PARTNERS SECTION ================= */
+
+.partners-section {
+  text-align: center;
+}
+
+.partners-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: stretch;
+}
+
+.partner-card {
+  margin: 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 22px;
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+}
+
+.partner-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+  border-color: #0f213f;
+}
+
+.partner-card img {
+  width: 100%;
+  max-width: 240px;
+  height: 120px;
+  object-fit: contain;
+  display: block;
+}
+
+.partner-card figcaption {
+  margin-top: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f213f;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
 /* ================== MEDIA QUERIES ================== */
 
 /* Tablets and medium screens (≤ 1024px) */
@@ -594,9 +646,14 @@ body {
     .vision-section,
     .mission-section,
     .stats-section,
-    .quotes-section {
+    .quotes-section,
+    .partners-section {
         width: 92%;
         margin: 80px auto;
+    }
+    
+    .partner-card img {
+    height: 100px;
     }
 
     .section-title {
