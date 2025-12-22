@@ -194,6 +194,7 @@ function initPartnersMarquee() {
   track.dataset.ready = "1";
 
   const marquee = track.parentElement;
+  const DUPLICATE_SETS = 4;
 
   // Prevent image drag issues on mobile
   track.querySelectorAll("img").forEach((img) => {
@@ -202,7 +203,10 @@ function initPartnersMarquee() {
 
   // Duplicate original items once (then we loop by resetting translate)
   const originalItems = Array.from(track.children).map((n) => n.cloneNode(true));
-  originalItems.forEach((node) => track.appendChild(node));
+
+  for (let i = 0; i < DUPLICATE_SETS; i++) {
+    originalItems.forEach((node) => track.appendChild(node.cloneNode(true)));
+  }
 
   let x = 0;
   let halfWidth = 0;
@@ -222,7 +226,7 @@ function initPartnersMarquee() {
 
   measure();
 
-  const speedPxPerSec = 90; // adjust if you want faster/slower
+  const speedPxPerSec = 80; // adjust if you want faster/slower
 
   const tick = (ts) => {
     if (!lastTs) lastTs = ts;
