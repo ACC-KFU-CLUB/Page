@@ -183,42 +183,72 @@ if ("IntersectionObserver" in window && revealItems.length) {
 }
 
 
-/* ================= PARTNERS MARQUEE (INFINITE LOOP) ================= */
+/* ================= PARTNERS MARQUEE (MOBILE-SAFE INFINITE LOOP) ================= */
 
 function initPartnersMarquee() {
   const track = document.getElementById("partnersTrack");
   if (!track) return;
 
-  // Duplicate items until the track is at least 2x the marquee width,
-  // so translateX(-50%) always looks seamless.
-  const marquee = track.parentElement;
-  const originalItems = Array.from(track.children);
-
   // Guard: don’t double-init
   if (track.dataset.ready === "1") return;
   track.dataset.ready = "1";
 
-  // Ensure we have enough content to loop smoothly
-  const fill = () => {
-    const marqueeWidth = marquee.clientWidth;
-    while (track.scrollWidth < marqueeWidth * 5) {
+  const marquee = track.parentElement;
+
+  // Prevent image drag issues on mobile
+  track.querySelectorAll("img").forEach((img) => {
+    img.setAttribute("draggable", "false");
+  });
+
+  // Duplicate original items once (then we loop by resetting translate)
+  const originalItems = Array.from(track.children).map((n) => n.cloneNode(true));
+  originalItems.forEach((node) => track.appendChild(node));
+
+  let x = 0;
+  let halfWidth = 0;
+  let lastTs = 0;
+
+  const measure = () => {
+    // Half width = width of the original set (before duplication)
+    // Since we duplicated once, total scrollWidth is ~2x original.
+    halfWidth = Math.floor(track.scrollWidth / 2);
+
+    // If still too short (very wide phones / few items), keep duplicating until safe
+    while (track.scrollWidth < marquee.clientWidth * 2.2) {
       originalItems.forEach((node) => track.appendChild(node.cloneNode(true)));
+      halfWidth = Math.floor(track.scrollWidth / 2);
     }
   };
 
-  fill();
+  measure();
 
-  // Set speed based on content length (longer track = slightly longer duration)
-  const updateSpeed = () => {
-    fill();
-    const distance = track.scrollWidth / 2; // because we animate to -50%
-    const pixelsPerSecond = 50; // smooth constant speed
-    const seconds = Math.max(16, Math.round(distance / pixelsPerSecond));
-    track.style.setProperty("--partners-speed", `${seconds}s`);
+  const speedPxPerSec = 90; // adjust if you want faster/slower
+
+  const tick = (ts) => {
+    if (!lastTs) lastTs = ts;
+    const dt = (ts - lastTs) / 1000;
+    lastTs = ts;
+
+    x -= speedPxPerSec * dt;
+
+    // When we've moved past the first half, jump back seamlessly
+    if (Math.abs(x) >= halfWidth) {
+      x += halfWidth;
+    }
+
+    track.style.transform = `translate3d(${x}px, 0, 0)`;
+    requestAnimationFrame(tick);
   };
 
-  updateSpeed();
-  window.addEventListener("resize", updateSpeed, { passive: true });
+  requestAnimationFrame(tick);
+
+  window.addEventListener("resize", () => {
+    // reset and re-measure for orientation changes
+    x = 0;
+    lastTs = 0;
+    track.style.transform = "translate3d(0,0,0)";
+    measure();
+  }, { passive: true });
 }
 
 initPartnersMarquee();

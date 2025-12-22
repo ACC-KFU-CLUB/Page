@@ -478,12 +478,19 @@ body {
 
 /* Track that moves (JS will duplicate items for seamless looping) */
 .partners-track{
-    display: flex;
+    display: inline-flex;
+    flex-wrap: nowrap;
     align-items: stretch;
-    gap: 22px;
-    width: max-content;
+    gap: 36px;
+    padding: 0 18px;
+
+    /* important for phones */
+    white-space: nowrap;
     will-change: transform;
-    animation: partners-scroll var(--partners-speed, 24s) linear infinite;
+    transform: translate3d(0,0,0);
+
+    /* stop CSS animation because JS will handle it */
+    animation: none;
 }
 
 /* Each partner card */
@@ -498,8 +505,9 @@ body {
 
 /* Frameless, same size */
 .partner-item img{
-    width: 150px;
+    width: 190px;
     height: 150px;
+    padding-bottom: 10px;
     object-fit: contain;
     display: block;
     border: none;
@@ -511,12 +519,12 @@ body {
 
 /* Name under image */
 .partner-item figcaption{
-    margin-top: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #0f213f;
-    line-height: 1.4;
-    text-align: center;
+    margin-top: 12px;     
+    padding: 0 6px;       /* keeps text away from edges */
+    max-width: 190px;
+    white-space: normal;  /* allow wrapping */
+    word-break: normal;
+    overflow-wrap: break-word;
 }
 
 /* Movement: goes into the left, appears from the right */
