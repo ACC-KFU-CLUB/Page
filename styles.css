@@ -22,8 +22,9 @@ body {
 .vision-section,
 .mission-section,
 .stats-section,
-.quotes-section 
-.partners-section{
+.quotes-section,
+.partners-section
+{
     width: 90%;
     max-width: 1200px;
     margin: 10px auto;
@@ -455,6 +456,75 @@ body {
     opacity: 0.85;
 }
 
+
+/* ================= PARTNERS SECTION ================= */
+
+.partners-section{
+    width: 90%;
+    max-width: 1200px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+/* Outer window */
+.partners-marquee{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-top: 20px;
+    padding: 10px 0;
+    direction: ltr; /* keep animation behavior consistent even on RTL pages */
+}
+
+/* Track that moves (JS will duplicate items for seamless looping) */
+.partners-track{
+    display: flex;
+    align-items: stretch;
+    gap: 22px;
+    width: max-content;
+    will-change: transform;
+    animation: partners-scroll var(--partners-speed, 24s) linear infinite;
+}
+
+/* Each partner card */
+.partner-item{
+    margin: 0;
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+}
+
+/* Frameless, same size */
+.partner-item img{
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    display: block;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    /* subtle “best-looking” separation without adding a frame */
+    filter: drop-shadow(0 10px 18px rgba(0,0,0,0.10));
+}
+
+/* Name under image */
+.partner-item figcaption{
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f213f;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* Movement: goes into the left, appears from the right */
+@keyframes partners-scroll{
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
 /* ================= FOOTER SECTION ================= */
 
 .main-footer {
@@ -508,56 +578,6 @@ body {
     margin-top: 10px;
 }
 
-/* ================= PARTNERS SECTION ================= */
-
-.partners-section {
-  text-align: center;
-}
-
-.partners-grid {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  align-items: stretch;
-}
-
-.partner-card {
-  margin: 0;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 18px;
-  padding: 22px;
-  transition: 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(-6px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
-}
-
-.partner-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
-  border-color: #0f213f;
-}
-
-.partner-card img {
-  width: 100%;
-  max-width: 240px;
-  height: 120px;
-  object-fit: contain;
-  display: block;
-}
-
-.partner-card figcaption {
-  margin-top: 14px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #0f213f;
-  opacity: 0.9;
-  line-height: 1.6;
-}
 
 /* ================== MEDIA QUERIES ================== */
 
@@ -585,6 +605,15 @@ body {
 
 /* Phones (iPhone / Samsung etc, ≤ 768px) */
 @media (max-width: 768px) {
+
+    .partner-item{ width: 145px; }
+    .partner-item img{
+        width: 120px;
+        height: 120px;
+    }
+    .partner-item figcaption{
+        font-size: 13px;
+    }
 
     /* Header / Nav */
     .navbar {
@@ -647,14 +676,12 @@ body {
     .mission-section,
     .stats-section,
     .quotes-section,
-    .partners-section {
+    .partners-section
+    {
         width: 92%;
         margin: 40px auto;
     }
     
-    .partner-card img {
-    height: 100px;
-    }
 
     .section-title {
         font-size: 24px;

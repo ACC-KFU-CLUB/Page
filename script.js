@@ -183,5 +183,45 @@ if ("IntersectionObserver" in window && revealItems.length) {
 }
 
 
+/* ================= PARTNERS MARQUEE (INFINITE LOOP) ================= */
+
+function initPartnersMarquee() {
+  const track = document.getElementById("partnersTrack");
+  if (!track) return;
+
+  // Duplicate items until the track is at least 2x the marquee width,
+  // so translateX(-50%) always looks seamless.
+  const marquee = track.parentElement;
+  const originalItems = Array.from(track.children);
+
+  // Guard: don’t double-init
+  if (track.dataset.ready === "1") return;
+  track.dataset.ready = "1";
+
+  // Ensure we have enough content to loop smoothly
+  const fill = () => {
+    const marqueeWidth = marquee.clientWidth;
+    while (track.scrollWidth < marqueeWidth * 5) {
+      originalItems.forEach((node) => track.appendChild(node.cloneNode(true)));
+    }
+  };
+
+  fill();
+
+  // Set speed based on content length (longer track = slightly longer duration)
+  const updateSpeed = () => {
+    fill();
+    const distance = track.scrollWidth / 2; // because we animate to -50%
+    const pixelsPerSecond = 50; // smooth constant speed
+    const seconds = Math.max(16, Math.round(distance / pixelsPerSecond));
+    track.style.setProperty("--partners-speed", `${seconds}s`);
+  };
+
+  updateSpeed();
+  window.addEventListener("resize", updateSpeed, { passive: true });
+}
+
+initPartnersMarquee();
+
 
 
