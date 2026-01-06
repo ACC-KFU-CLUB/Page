@@ -161,6 +161,14 @@ body {
     color: #0f213f;
     margin-bottom: 30px;
     font-weight: 700;
+    text-align: center;
+}
+
+.section-title-block{
+    font-size: 32px;
+    color: #0f213f;
+    margin-bottom: 30px;
+    font-weight: 700;
     text-align: right;
 }
 
@@ -587,6 +595,7 @@ body {
 }
 
 
+
 /* ================== MEDIA QUERIES ================== */
 
 /* Tablets and medium screens (≤ 1024px) */
@@ -596,6 +605,9 @@ body {
     }
 
     .section-title {
+        font-size: 28px;
+    }
+    .section-title-block{
         font-size: 28px;
     }
 
@@ -692,6 +704,10 @@ body {
     
 
     .section-title {
+        font-size: 24px;
+    }
+
+    .section-title-block{
         font-size: 24px;
     }
 
@@ -900,4 +916,402 @@ body {
 .reveal-on-scroll.reset {
     transition: none;
 }
+
+
+
+
+/* CSS (remade + added Level 0) */
+
+/* RESET STYLES & HELPER CLASSES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+  --level-0: #0f213f;
+  --level-1: #0f213f;
+  --level-2: #0f213f;
+  --level-3: #0f213f;
+  --level-4: #0f213f;
+  --black: #000000;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ol {
+  list-style: none;
+}
+
+body {
+  margin: 50px 0 100px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+.container-org {
+  max-width: 1000px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.with-margin {
+  margin-top: 100px;
+}
+
+.rectangle {
+  position: relative;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+}
+
+
+/* LEVEL-0 STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.level-0 {
+  width: 50%;
+  margin: 0 auto 40px;
+  background: var(--level-0);
+}
+
+/* connector down to Level 1 (20px) */
+.level-0::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 20px;
+  background: var(--black);
+}
+
+
+/* LEVEL-1 STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.level-1 {
+  width: 50%;
+  margin: 0 auto 40px;
+  background: var(--level-1);
+}
+
+/* connector up to Level 0 (20px) */
+.level-1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 2px;
+  height: 20px;
+  background: var(--black);
+}
+
+/* connector down to Level 2 (20px) */
+.level-1::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 20px;
+  background: var(--black);
+}
+
+
+/* LEVEL-2 STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.level-2-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.level-2-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 25%;
+  width: 50%;
+  height: 2px;
+  background: var(--black);
+}
+
+.level-2-wrapper::after {
+  display: none;
+  content: "";
+  position: absolute;
+  left: -20px;
+  bottom: -20px;
+  width: calc(100% + 20px);
+  height: 2px;
+  background: var(--black);
+}
+
+.level-2-wrapper li {
+  position: relative;
+}
+
+.level-2-wrapper > li::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 20px;
+  background: var(--black);
+}
+
+.level-2 {
+  width: 70%;
+  margin: 0 auto 40px;
+  background: var(--level-2);
+}
+
+.level-2::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 20px;
+  background: var(--black);
+}
+
+.level-2::after {
+  display: none;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-100%, -50%);
+  width: 20px;
+  height: 2px;
+  background: var(--black);
+}
+
+
+/* LEVEL-3 STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.level-3-wrapper-right{
+position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  width: 90%;
+  margin: 0 auto; 
+}
+
+.level-3-wrapper-right::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: calc(17% - 9px);
+  width: calc(67% + 13px);
+  height: 2px;
+  background: var(--black);
+}
+
+.level-3-wrapper-right > li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 2px;
+  height: 20px;
+  background: var(--black);
+}
+
+.level-3-wrapper-left {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 20px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.level-3-wrapper-left::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: calc(9% - 5px);
+  width: calc(79% + 10px);
+  height: 2px;
+  background: var(--black);
+}
+
+.level-3-wrapper-left > li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 2px;
+  height: 20px;
+  background: var(--black);
+}
+
+.level-3 {
+  margin-bottom: 20px;
+  background: var(--level-3);
+}
+
+
+/* LEVEL-4 STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.level-4-wrapper {
+  position: relative;
+  width: 80%;
+  margin-left: auto;
+}
+
+.level-4-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 2px;
+  height: calc(100% + 20px);
+  background: var(--black);
+}
+
+.level-4-wrapper li + li {
+  margin-top: 20px;
+}
+
+.level-4 {
+  font-weight: normal;
+  background: var(--level-4);
+}
+
+.level-4::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-100%, -50%);
+  width: 20px;
+  height: 2px;
+  background: var(--black);
+}
+
+
+/* MQ STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media screen and (max-width: 700px) {
+  .rectangle {
+    padding: 20px 10px;
+  }
+
+  .level-0,
+  .level-1,
+  .level-2 {
+    width: 100%;
+  }
+
+  .level-0,
+  .level-1 {
+    margin-bottom: 20px;
+  }
+
+
+  .level-1::before,
+  .level-1::after,
+  .level-2-wrapper > li::before {
+    display: none;
+  }
+
+  .level-2-wrapper,
+  .level-2-wrapper::after,
+  .level-2::after {
+    display: block;
+  }
+
+  .level-2-wrapper {
+    width: 95%;
+    margin-left: 10%;
+  }
+
+  .level-2-wrapper::before {
+    left: -20px;
+    width: 2px;
+    height: calc(100% + 40px);
+  }
+
+  .level-2-wrapper > li:not(:first-child) {
+    margin-top: 50px;
+  }
+
+  .level-3-wrapper-left::before {
+  left: calc(12% - 5px);
+  width: calc(76% + 11px);
+}
+}
+
+
+/* Put this in your CSS file (auto-fit inside each rectangle) */
+.member-card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  gap:0.4em;
+  padding:0.8em;
+  text-align:center;
+}
+
+.member-role{
+  font-size: clamp(10px, 1.6vw, 16px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.member-name{
+  font-size: clamp(10px, 1.5vw, 15px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.member-photo-link{
+  display:block;
+  width: min(60%, 110px);
+}
+
+.member-photo{
+  width: 100%;
+  height: auto;
+  display:block;
+  object-fit: cover;
+  border: none;
+  box-shadow: none;
+}
+
+.member-socials{
+  display:flex;
+  gap:0.6em;
+  align-items:center;
+  justify-content:center;
+}
+
+.social-link{
+  display:inline-flex;
+  width: clamp(16px, 2.2vw, 22px);
+  height: clamp(16px, 2.2vw, 22px);
+}
+
+.social-icon{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+}
+
+
+
 
