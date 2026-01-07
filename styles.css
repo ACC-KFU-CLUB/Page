@@ -1296,7 +1296,7 @@ position: relative;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 5px;
-    width: 103%;
+    width: 100%;
     margin: 0 auto;
     }
 
@@ -1446,7 +1446,7 @@ position: relative;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: 5px;
-    width: 103%;
+    width: 100%;
     margin: 0 auto;
     }
 
@@ -1454,8 +1454,8 @@ position: relative;
     content: "";
     position: absolute;
     top: -20px;
-    left: calc(12% - 4px);
-    width: calc(72% + 7px);
+    left: calc(12% - 2px);
+    width: calc(74% + 7px);
     height: 2px;
     background: var(--black);
     }
