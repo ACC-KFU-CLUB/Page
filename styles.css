@@ -1151,8 +1151,8 @@ position: relative;
   content: "";
   position: absolute;
   top: -20px;
-  left: calc(10% - 4px);
-  width: calc(74% + 7px);
+  left: calc(11% - 4px);
+  width: calc(75% + 9px);
   height: 2px;
   background: var(--black);
 }
@@ -1577,7 +1577,7 @@ position: relative;
     position: absolute;
     top: -20px;
     left: calc(18% - 9px);
-    width: calc(68% + 3px);
+    width: calc(68% + 2px);
     height: 2px;
     background: var(--black);
     }
@@ -1606,8 +1606,8 @@ position: relative;
     content: "";
     position: absolute;
     top: -20px;
-    left: calc(12% - 2px);
-    width: calc(73% + 7px);
+    left: calc(12% - 1px);
+    width: calc(74% + 6px);
     height: 2px;
     background: var(--black);
     }
